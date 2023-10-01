@@ -3,26 +3,31 @@ import "./App.css";
 import shapes from "./Data/shapes.ts";
 
 const App = () => {
-  React.useEffect(() => {
-    const temp = document.getElementById("testscroll");
-    if (temp) {
-      temp.scrollLeft = 500;
-    }
-  }, [document.getElementById("testscroll")]);
-
   const [correct, setCorrect] = useState<string[]>([]);
   const [startTime] = useState<number>(new Date().getTime());
   const [wastedClicks, setWastedClicks] = useState<number>(0);
   const [totalTime, setTotalTime] = useState<number>();
   const [finished, setFinished] = useState<boolean>(false);
+  const [resultsShown, setResultsShown] = useState<boolean>(false);
+  const [firstLaunch, setFirstLaunch] = useState<boolean>(true);
 
   React.useEffect(() => {
-    console.log(correct);
+    const temp = document.getElementById("testscroll");
+    if (temp && firstLaunch) {
+      temp.scrollLeft = 300;
+      setFirstLaunch(false);
+    }
     if (correct.length === 3) {
       setTotalTime((new Date().getTime() - startTime) / 1000);
       setFinished(true);
     }
-  }, [correct, startTime]);
+  }, [
+    document.getElementById("testscroll"),
+    correct,
+    startTime,
+    firstLaunch,
+    setFirstLaunch,
+  ]);
 
   const appartmentClicked = (poly: {
     sold: boolean | null;
@@ -41,62 +46,92 @@ const App = () => {
     alert("Deze is niet te koop");
   };
 
+  const getPolygonColor = (sold: boolean | null) => {
+    if (sold === false) {
+      return "#00ff2a8b";
+    }
+    if (sold === null) {
+      return "#ff7b008a";
+    }
+    return "#ff00008b";
+  };
+
   return (
     <article>
-      <div className="wrapper" id="testscroll">
-        <div className="backgroundIMG">
-          <svg
-            onClick={() => {
-              if (!finished) setWastedClicks(wastedClicks + 1);
-            }}
-            viewBox="0 0 1920 1200"
-            id="floormap"
-          >
-            {shapes.polygons.map((poly) => {
-              return (
-                <polygon
-                  key={poly.coords}
-                  onClick={() => appartmentClicked(poly)}
-                  points={poly.coords}
-                  className="trace"
-                  fill={
-                    poly.sold === false
-                      ? "#00ff2a8b"
-                      : poly.sold === null
-                      ? "#ff7b008a"
-                      : "#ff00008b"
-                  }
-                />
-              );
-            })}
-            {/* {shapes.circles.map((circle) => {
-              return (
-                <circle
-                  cx={circle.coords[0]}
-                  cy={circle.coords[1]}
-                  r={10}
-                  key={circle.coords.join()}
-                  onClick={() => appartmentClicked(circle)}
-                  fill={
-                    circle.sold === false
-                      ? "#00ff2a8b"
-                      : circle.sold === null
-                      ? "#ff7b008a"
-                      : "#ff00008b"
-                  }
-                />
-              );
-            })} */}
-          </svg>
+      <section className="titleSection">
+        <h1 className="titleSection_Title">Woningzoeker prototype 1</h1>
+        <p className="titleSection_Version">
+          V{process.env.REACT_APP_VERSION} {process.env.REACT_APP_VERSION_TYPE}
+        </p>
+      </section>
+      <section>
+        <p>
+          <strong>
+            Deze text is enkel voor de vulling van de pagina en hoeft niet
+            gelezen te worden.
+          </strong>
+          ,elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+        </p>
+      </section>
+      <section>
+        <h2>Woningzoeker: </h2>
+        <div className="wrapper" id="testscroll">
+          <div className="backgroundIMG">
+            <svg
+              onClick={() => {
+                if (!finished) setWastedClicks(wastedClicks + 1);
+              }}
+              viewBox="0 0 1920 1200"
+              id="floormap"
+            >
+              {shapes.polygons.map((poly) => {
+                return (
+                  <polygon
+                    key={poly.coords}
+                    onClick={() => appartmentClicked(poly)}
+                    points={poly.coords}
+                    className="trace"
+                    fill={getPolygonColor(poly.sold)}
+                  />
+                );
+              })}
+            </svg>
+          </div>
         </div>
-      </div>
+      </section>
       {finished ? (
+        !resultsShown ? (
+          <section className="ResultatenSection">
+            <h1 className="ResultatenSection_Title">Resultaten</h1>
+            <button
+              className="ResultatenSection_Button"
+              onClick={() => setResultsShown(true)}
+            >
+              Laat resultaten zien
+            </button>
+          </section>
+        ) : (
+          <section className="ResultatenSection">
+            <h1 className="ResultatenSection_Title">Resultaten</h1>
+            <h5 className="ResultatenSection_Resultaten">Tijd: {totalTime}</h5>
+            <h5 className="ResultatenSection_Resultaten">
+              Wasted clicks: {wastedClicks - 3}
+            </h5>
+          </section>
+        )
+      ) : (
         <section>
-          <h1>Resultaten</h1>
-          <h5>Tijd: {totalTime}</h5>
-          <h5>Wasted clicks: {wastedClicks - 3}</h5>
+          <p>
+            <strong>
+              Deze text is enkel voor de vulling van de pagina en hoeft niet
+              gelezen te worden.
+            </strong>
+            , elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+          </p>
         </section>
-      ) : null}
+      )}
     </article>
   );
 };
