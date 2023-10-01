@@ -68,14 +68,13 @@ article {
   overflow: scroll;
   margin-right: 0px;
   margin-bottom: 0px;
-  background: red;
 }
 
 .backgroundIMG {
   position: relative;
   font-size: 0;
-  width: 1280px;
-  height: 800px;
+  width: 960px;
+  height: 600px;
   line-height: 0;
   background-repeat: no-repeat;
   background-position: 0 0;
