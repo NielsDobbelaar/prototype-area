@@ -10,6 +10,11 @@ const App = () => {
   const [finished, setFinished] = useState<boolean>(false);
   const [resultsShown, setResultsShown] = useState<boolean>(false);
   const [firstLaunch, setFirstLaunch] = useState<boolean>(true);
+  const [zoom, setZoom] = useState<number>(920);
+
+  const imageStyle = {
+    width: `${zoom}px`,
+  };
 
   React.useEffect(() => {
     const temp = document.getElementById("testscroll");
@@ -56,6 +61,17 @@ const App = () => {
     return "#ff00008b";
   };
 
+  const zoomIn = () => {
+    if (zoom !== 1220) {
+      setZoom(zoom + 100);
+    }
+  };
+  const zoomOut = () => {
+    if (zoom !== 620) {
+      setZoom(zoom - 100);
+    }
+  };
+
   return (
     <article>
       <section className="titleSection">
@@ -74,10 +90,18 @@ const App = () => {
           aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
         </p>
       </section>
-      <section>
+      <section className="woningZoekerSection">
         <h2>Woningzoeker: </h2>
+        <section className="zoomButtonsSection">
+          <button className="zoomButtonsSectionButton" onClick={zoomOut}>
+            -
+          </button>
+          <button className="zoomButtonsSectionButton" onClick={zoomIn}>
+            +
+          </button>
+        </section>
         <div className="wrapper" id="testscroll">
-          <div className="backgroundIMG">
+          <div className="backgroundIMG" style={imageStyle}>
             <svg
               onClick={() => {
                 if (!finished) setWastedClicks(wastedClicks + 1);

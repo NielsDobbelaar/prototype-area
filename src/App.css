@@ -70,11 +70,14 @@ article {
   margin-bottom: 0px;
 }
 
+.woningZoekerSection {
+  position: relative;
+}
+
 .backgroundIMG {
   position: relative;
   font-size: 0;
-  width: 960px;
-  height: 600px;
+  aspect-ratio: 960/600;
   line-height: 0;
   background-repeat: no-repeat;
   background-position: 0 0;
@@ -84,6 +87,24 @@ article {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   overflow: hidden;
+}
+
+.zoomButtonsSection {
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
+  z-index: 1;
+  width: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.zoomButtonsSectionButton {
+  width: 25px;
+  height: 25px;
+  background-color: #c69308;
+  border: 0.25px solid white;
 }
 
 .trace {
