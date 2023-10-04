@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/prototype-area/static/css/main.c94209a0.css",
-    "main.js": "/prototype-area/static/js/main.0e14554c.js",
+    "main.css": "/prototype-area/static/css/main.19ce832e.css",
+    "main.js": "/prototype-area/static/js/main.c36470c1.js",
     "static/js/787.51efe5bb.chunk.js": "/prototype-area/static/js/787.51efe5bb.chunk.js",
     "static/media/mogelijk.png": "/prototype-area/static/media/mogelijk.b7d0d01684d7bdda97b4.png",
     "index.html": "/prototype-area/index.html",
-    "main.c94209a0.css.map": "/prototype-area/static/css/main.c94209a0.css.map",
-    "main.0e14554c.js.map": "/prototype-area/static/js/main.0e14554c.js.map",
+    "main.19ce832e.css.map": "/prototype-area/static/css/main.19ce832e.css.map",
+    "main.c36470c1.js.map": "/prototype-area/static/js/main.c36470c1.js.map",
     "787.51efe5bb.chunk.js.map": "/prototype-area/static/js/787.51efe5bb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c94209a0.css",
-    "static/js/main.0e14554c.js"
+    "static/css/main.19ce832e.css",
+    "static/js/main.c36470c1.js"
   ]
 }
