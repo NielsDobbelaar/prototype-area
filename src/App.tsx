@@ -123,6 +123,17 @@ const App = () => {
             </svg>
           </div>
         </div>
+        <section className="legendSection">
+          <div className="legend">
+            <div className="legendCircle legendSold"></div> - Verkocht
+          </div>
+          <div className="legend">
+            <div className="legendCircle legendOptie"></div> - In optie
+          </div>
+          <div className="legend">
+            <div className="legendCircle legendTeKoop"></div> - Te Koop
+          </div>
+        </section>
       </section>
       {finished ? (
         !resultsShown ? (

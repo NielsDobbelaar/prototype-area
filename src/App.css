@@ -91,7 +91,7 @@ article {
 
 .zoomButtonsSection {
   position: absolute;
-  bottom: 20px;
+  bottom: 45px;
   right: 5px;
   z-index: 1;
   width: 60px;
@@ -105,6 +105,41 @@ article {
   height: 25px;
   background-color: #c69308;
   border: 0.25px solid white;
+}
+
+.legendSection {
+  display: flex;
+  flex-direction: row;
+}
+
+.legend {
+  margin-top: 10px;
+  height: 20px;
+  width: 33%;
+  border: 1px black;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.legendCircle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.legendSold {
+  background-color: #ff0000;
+}
+
+.legendOptie {
+  background-color: #ff7b00;
+}
+
+.legendTeKoop {
+  background-color: #00ff2a;
 }
 
 .trace {
